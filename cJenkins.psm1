@@ -13,7 +13,7 @@ class cJenkinsInstaller {
     # Gets the resource's current state.
     [cJenkinsInstaller] Get() {
 
-        $Package = Get-Package -Name 'Jenkins*' -ErrorAction SilentlyContinue
+        $Package = Get-Package -Name 'Jenkins*' -ProviderName msi -ErrorAction SilentlyContinue
 
         if ($null -ne $package) {
 
@@ -46,7 +46,7 @@ class cJenkinsInstaller {
         }
         # uninstall
         else {
-             Get-Package -Name 'Jenkins*' | Uninstall-Package
+             Get-Package -Name 'Jenkins*' -ProviderName msi | Uninstall-Package
         }
 
     }
