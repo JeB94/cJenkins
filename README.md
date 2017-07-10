@@ -9,14 +9,21 @@ PowerShell DSC for installing Jenkins
 ## Examples
 
 ```powershell
-configuration JenkinsInstallation
-{
-    Import-DscResource -ModuleName 'cJenkins'
+Configuration DSCJenkins {
+    param (
 
-    cJenkinsInstaller InstallJenkins
-    {
-        Ensure    = 'Present'
+        $NodeName = $ENV:COMPUTERNAME
+    )
+
+    Import-DscResource -ModuleName cJenkins
+
+    Node $NodeName {
+
+        cJenkinsInstaller Install {
+            Ensure = 'Present'
+        }
     }
+
 }
 ```
 
@@ -25,14 +32,21 @@ Ensures that Jenkins is installed.
 
 
 ```powershell
-configuration JenkinsInstallation
-{
-    Import-DscResource -ModuleName 'cJenkins'
+Configuration DSCJenkins {
+    param (
 
-    cJenkinsInstaller InstallJenkins
-    {
-        Ensure    = 'Absent'
+        $NodeName = $ENV:COMPUTERNAME
+    )
+
+    Import-DscResource -ModuleName cJenkins
+
+    Node $NodeName {
+
+        cJenkinsInstaller Install {
+            Ensure = 'Absent'
+        }
     }
+
 }
 ```
 

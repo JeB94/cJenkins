@@ -5,13 +5,13 @@ enum Ensure {
 
 
 [DscResource()]
-class cJenkins {
+class cJenkinsInstaller {
     [DscProperty(Key)]
     [String] $Ensure
         
 
     # Gets the resource's current state.
-    [cJenkins] Get() {
+    [cJenkinsInstaller] Get() {
 
         $Package = Get-Package -Name 'Jenkins*' -ErrorAction SilentlyContinue
 
