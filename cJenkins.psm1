@@ -54,7 +54,7 @@ class cJenkinsInstaller {
     # Tests if the resource is in the desired state.
     [bool] Test() {
 
-        $Package = Get-Package -Name 'Jenkins*' -ErrorAction SilentlyContinue
+        $Package = Get-Package -Name 'Jenkins*' -ProviderName msi -ErrorAction SilentlyContinue
 
         if ($this.Ensure -eq [Ensure]::Present) {
             return ($null -ne $Package)
